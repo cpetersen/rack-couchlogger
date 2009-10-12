@@ -17,7 +17,9 @@ You can query your log by using the following methods:
 
 returns all log events by the date/time they were created.
 
-    Log.by_path_info_times
+    Log.by_path_info_times(:raw => true, :reduce => true, :group => true)["rows"].each do |r| 
+      puts "#{r["key"]} takes #{r["value"]} seconds on average"
+    end
 
 returns all the paths that have been requested and their average duration.
 
