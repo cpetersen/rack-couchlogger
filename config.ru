@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'couch_logger'
-require 'hello_world'
 
 use Rack::CouchLogger
-run Rack::HelloWorld
+run lambda { [200, {"Content-Type" => "text/plain"}, ["Hello world!"]] }
