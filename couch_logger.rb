@@ -6,7 +6,9 @@ class Log < CouchRest::ExtendedDocument
   use_database database.default_database
 
   property :response_time
+  property :created_at
 
+  view_by :created_at
   # Example view, gives the average response time by path
   view_by :path_info_times,
           :map => "function(doc) {
@@ -31,6 +33,7 @@ module Rack
       result = @app.call(env)
       log = Log.new(env)
       log.response_time = (Time.now - start)
+      log.created_at = start
       # TODO, save asynchronously with log.save(true)
       log.save
       result
