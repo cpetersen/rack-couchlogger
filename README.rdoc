@@ -21,7 +21,10 @@ returns all log events by the date/time they were created.
       puts "#{r["key"]} takes #{r["value"]} seconds on average"
     end
 
-returns all the paths that have been requested and their average duration.
+returns all the paths that have been requested and their average duration:
+
+    / takes 0.00101852675953079 seconds on average
+    /favicon.ico takes 0.000547599665421724 seconds on average
 
 == Source
 
