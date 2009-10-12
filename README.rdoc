@@ -1,0 +1,30 @@
+= rack-couchlogger
+
+rack-couchlogger is Rack middleware that stores the environment for every 
+incoming request, as well as the duration of the request and request time
+in CouchDB. It also provides basic ability to query that data. Your config.ru
+should looks something like:
+
+    require 'rubygems'
+    require 'couch_logger'
+    
+    use Rack::CouchLogger
+    run lambda { [200, {"Content-Type" => "text/plain"}, ["Hello world!"]] }
+
+You can query your log by using the following methods:
+
+    Log.by_created_at
+
+returns all log events by the date/time they were created.
+
+    Log.by_path_info_times
+
+returns all the paths that have been requested and their average duration.
+
+== Source
+
+http://github.com/cpetersen/rack-couchlogger
+
+== Copyright
+
+Copyright (c) 2009 Christopher Petersen. See LICENSE for details.
