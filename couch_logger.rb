@@ -31,7 +31,7 @@ module Rack
       result = @app.call(env)
       log = Log.new(env)
       log.response_time = (Time.now - start)
-      # TODO, save asynchronously with l.save(true)
+      # TODO, save asynchronously with log.save(true)
       log.save
       result
     end
